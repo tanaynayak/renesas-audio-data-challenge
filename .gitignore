@@ -2,3 +2,4 @@
 .vscode/settings.json
 data/*
 .pytest_cache/*
+__pycache__/*
