@@ -10,6 +10,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 import seaborn as sns
 import numpy as np
+from joblib import dump
 
 
 meta_data = pd.read_csv('data/meta.csv')
@@ -117,6 +118,10 @@ if __name__ == "__main__":
     rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
     rf_model.fit(X_train, y_train)
 
+    dump(svm_model, 'svm_model.joblib')
+    dump(rf_model, 'rf_model.joblib')
+    dump(label_encoder, 'label_encoder.joblib')
+
     y_pred_svm = svm_model.predict(X_val)
     y_pred_rf = rf_model.predict(X_val)
 
@@ -180,4 +185,3 @@ if __name__ == "__main__":
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
     plt.show()
-
